@@ -1,0 +1,20 @@
+name: PR 검문소
+# Pull Request 가 열리거나 갱신될 때마다 자동으로 돈다.
+# 데이터(JSON)가 깨지지 않았는지, 리포트가 정상으로 빌드되는지 확인한다.
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 데이터 JSON 검사
+        run: |
+          for f in data/*.json; do
+            echo "검사: $f"
+            python3 -c "import json,sys; json.load(open(sys.argv[1], encoding='utf-8'))" "$f"
+          done
+      - name: 리포트 빌드 검사
+        run: python3 build.py
