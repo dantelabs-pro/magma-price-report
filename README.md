@@ -39,3 +39,5 @@ open _site/index.html      # 만들어진 리포트를 브라우저로 열기
 이후 main 에 변경이 합쳐질 때마다 리포트가 자동으로 다시 배포됩니다.
 
 배포 주소는 보통 `https://<your-id>.github.io/magma-price-report/` 입니다.
+
+연습용 메모 한 줄
